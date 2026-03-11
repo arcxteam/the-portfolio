@@ -15,7 +15,7 @@ Built for those who create, not just those who code. This is a streamlined perso
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 ![i18n](https://img.shields.io/badge/i18n-FF6B35?style=for-the-badge&logo=googletranslate&logoColor=white)
 
-![Version](https://img.shields.io/badge/v0.1.5-purple?style=flat-square)
+![Version](https://img.shields.io/badge/v0.1.5-yellow?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 </div>
