@@ -1,56 +1,68 @@
 <h1 align="center">Crafted Personal Experience — Portfolio</h1>
 
-![Banner-Portofolio](public/the-portfolio-draft.png)
+![Banner-Portofolio](public/homepage1.png)
 
 Built for those who create, not just those who code. This is a streamlined personal portfolio website designed to turn your professional journey into a clean visual experience. Forget complex setups—everything you see is powered by a single data file. It’s modular, fully responsive, and crafted to let your work do the talking while the system handles the layout.
 
+<div align="center">
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=green)
+![React](https://img.shields.io/badge/React-cyan?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![MDX](https://img.shields.io/badge/MDX-grey?style=for-the-badge&logo=mdx&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![i18n](https://img.shields.io/badge/i18n-FF6B35?style=for-the-badge&logo=googletranslate&logoColor=white)
+
+![Version](https://img.shields.io/badge/v0.1.5-purple?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+
+</div>
+
 ## Features
 
-- **Single-file content** — All portfolio data lives in `src/data/content.ts`. Update your name, bio, experience, projects, courses, socials, and footer from one place.
-- **Admin dashboard** — Edit content from any browser `your-domain/admin` without touching code. JWT-authenticated.
-- **8 languages** — English, Japanese, Chinese, Indonesian, Arabic (RTL), Russian, German, French.
-- **Project categories** — All / Featured / Works / Side-B filters with auto-slide carousel for Works.
-- **About tabs** — Skills, Education, Hobbies, Other — all configurable from `content.ts`.
-- **Performance optimized** — FPS-capped canvas background, viewport-only rendering, lazy loading, `content-visibility: auto`.
-- **SEO** — Dynamic Open Graph, Twitter cards, sitemap.xml, robots.txt.
-- **Donate section** — PayPal, ETH, BTC with QR codes and copy-to-clipboard.
-- **Responsive** — Mobile-first design with compact navigation.
+- **Single-file data** — All content controlled from one file `src/data/content.ts` — name, bio, projects, experience, courses, socials, footer, everything.
+- **Admin dashboard** — Browser-based editor at `/admin` with JWT login. Edit content without touching code.
+- **8 languages** — EN, JA, ZH, ID, AR (RTL), RU, DE, FR — client-side switching with `next-intl`.
+- **Project filters** — All / Featured / Works / Side-B categories with animated transitions.
+- **About tabs** — Skills, Education, Hobbies, Other — tabs render only when data exists.
+- **Performance** — FPS-capped canvas (24fps mobile, 30fps desktop), `content-visibility: auto`, lazy loading, React Compiler enabled.
+- **SEO ready** — Open Graph, Twitter cards, dynamic `sitemap.xml` and `robots.txt` via Next.js route handlers.
+- **Donate** — PayPal, ETH, BTC with QR code modals and copy-to-clipboard.
+- **Responsive** — Mobile-first with Tailwind breakpoints, compact nav, adaptive canvas rendering.
 
 ## Content Structure
 
-All data is managed via `src/data/content.ts`. Below is every configurable block:
+All content lives in [`src/data/content.ts`](src/data/content.ts). Here's what you can configure:
 
-| Export | Section | Description |
+| Export | Section | What it does |
 |---|---|---|
-| `roles` | Hero | Typewriter roles displayed after your name |
-| `siteConfig.name` | Global | Display name, SEO title, avatar, domain URL |
-| `siteConfig.heroDescription` | Hero | Description text below typewriter roles |
-| `siteConfig.socials` | Hero + Contact + Footer | Social links — GitHub, LinkedIn, Twitter, Instagram, YouTube, Telegram, Discord, Medium, HuggingFace, etc. |
-| `siteConfig.quote` | Contact | Quote text and author shown in contact section |
-| `statsConfig` | Hero + About | Manual stats — Years Experience, Languages (others auto-counted) |
-| `aboutData.intro` / `bio` | About | Bold intro paragraph and detailed bio |
-| `aboutData.skills` | About → Skills tab | Array of `{ category, items[] }` — add/remove freely |
-| `aboutData.education` | About → Education tab | Array of `{ degree, institution, year, description }` |
-| `aboutData.hobbies` | About → Hobbies tab | Array of `{ category, items[] }` |
-| `aboutData.other` | About → Other tab | Array of `{ category, items[] }` — optional activities |
-| `aboutData.stats` | Hero + About | Auto-computed from data — `{ label, value }` |
-| `experienceData` | Experience | Work history — `id, role, company, companyUrl, jobs, location, period, description, highlights[], skills[]` |
-| `projectsData` | Projects → Side-B | Tech projects — `id, title, description, image, tags[], liveUrl, githubUrl, repoVisibility, featured` |
-| `projectsData` (works) | Projects → Works | Professional projects — `id, title, description, images[], location, type: "works", featured` |
-| `coursesData` | Courses | Certificates — `id, title, provider, providerIcon (emoji), date, credentialUrl, description, skills[]` |
-| `navTabs` | Navigation | Tab order — `{ id, label }` mapped to section IDs |
-| `footerData.donate` | Footer | PayPal URL + QR, ETH address + QR, BTC address + QR |
-| `footerData.links` | Footer | Footer links — Privacy Policy, Terms, Sitemap |
+| `roles` | Hero | Typewriter role texts |
+| `siteConfig` | Global | Name, title, URL, avatar, socials, quote |
+| `aboutData` | About | Intro, bio, skills, education, hobbies, other, auto-computed stats |
+| `experienceData` | Experience | Work history with highlights and skills |
+| `projectsData` | Projects | Side-B (tech) and Works (professional) projects |
+| `coursesData` | Courses | Certificates with provider, date, and credential links |
+| `navTabs` | Navigation | Tab order mapped to section IDs |
+| `footerData` | Footer | Donate wallets (PayPal/ETH/BTC + QR) and footer links |
 
 ## Quick Start
-> Development
+
+> Git clone and install dependencies
+
 ```bash
 git clone https://github.com/arcxteam/the-portfolio.git
 cd the-portfolio
 npm install
 cp .env.example .env
+```
+
+> Development
+```bash
 npm run dev # development
 ```
+
 > Production
 ```bash
 pm2 start npm --name "portfolio" -- start
@@ -59,7 +71,7 @@ pm2 list | pm2 stop portfolio/all | pm2 kill
 pm2 logs portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) or your https://domain if you have set up `NEXT_PUBLIC_SITE_URL` in `.env`.
 
 ## Environment Variables
 
