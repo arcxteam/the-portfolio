@@ -165,7 +165,7 @@ export default function ContactSection() {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all border-[3px] border-[var(--clay-border)] ${
+                className={`w-full py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 transition-colors border-[3px] border-[var(--clay-border)] ${
                   sent
                     ? "bg-gradient-to-r from-emerald-500 to-emerald-400 text-white shadow-[4px_4px_0_rgba(16,185,129,0.25)]"
                     : "btn-primary"
