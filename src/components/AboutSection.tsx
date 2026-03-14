@@ -263,7 +263,7 @@ export default function AboutSection() {
                             <motion.span
                               key={item}
                               whileHover={{ scale: 1.05, y: -2 }}
-                              className="text-xs px-3 py-1 rounded-lg font-semibold cursor-default transition-all text-[var(--text-primary)]"
+                              className="text-xs px-3 py-1 rounded-lg font-semibold cursor-default text-[var(--text-primary)]"
                               style={{ background: accent.darkColor, border: '2px solid var(--clay-border)' }}
                             >
                               {item}
