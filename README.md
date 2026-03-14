@@ -15,15 +15,17 @@ Built for those who create, not just those who code. This is a streamlined perso
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 ![i18n](https://img.shields.io/badge/i18n-FF6B35?style=for-the-badge&logo=googletranslate&logoColor=white)
 
-![Version](https://img.shields.io/badge/v0.1.5-yellow?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Version](https://img.shields.io/badge/Release-v0.1.5-66ff00?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-2496ED?style=flat-square)
+
+[![Visit](https://img.shields.io/badge/Visit%20-Live_Demo-8a2be2?style=for-the-badge&logo=safari&logoColor=66ff00)](https://my-portfolio-templates.vercel.app/)
 
 </div>
 
 ## Features
 
 - **Single-file data** — All content controlled from one file `src/data/content.ts` — name, bio, projects, experience, courses, socials, footer, everything.
-- **Admin dashboard** — Browser-based editor at `/admin` with JWT login. Edit content without touching code.
+- **Admin dashboard** — Browser-based editor at `your-domain.com/admin` with JWT login. Edit content without touching code.
 - **8 languages** — EN, JA, ZH, ID, AR (RTL), RU, DE, FR — client-side switching with `next-intl`.
 - **Project filters** — All / Featured / Works / Side-B categories with animated transitions.
 - **About tabs** — Skills, Education, Hobbies, Other — tabs render only when data exists.
@@ -31,6 +33,9 @@ Built for those who create, not just those who code. This is a streamlined perso
 - **SEO ready** — Open Graph, Twitter cards, dynamic `sitemap.xml` and `robots.txt` via Next.js route handlers.
 - **Donate** — PayPal, ETH, BTC with QR code modals and copy-to-clipboard.
 - **Responsive** — Mobile-first with Tailwind breakpoints, compact nav, adaptive canvas rendering.
+
+> [!NOTE]
+> For testing, dashboard panel use this `username:admin & password:admin123` preview https://my-portfolio-templates.vercel.app/admin
 
 ## Content Structure
 
@@ -71,7 +76,7 @@ pm2 list | pm2 stop portfolio/all | pm2 kill
 pm2 logs portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) or your https://domain if you have set up `NEXT_PUBLIC_SITE_URL` in `.env`.
+Open [http://localhost:3000](http://localhost:3000) or your https://domain.com if have set up `NEXT_PUBLIC_SITE_URL` in `.env`.
 
 ## Environment Variables
 
@@ -111,7 +116,8 @@ SECURE_COOKIE=false
 | `NEXT_PUBLIC_SITE_NAME` | Site display name |
 | `SECURE_COOKIE` | Set `true` in production (requires HTTPS) |
 
-Generate secrets:
+**Generate secrets:**
+
 ```bash
 # JWT Secret
 openssl rand -hex 32
@@ -122,13 +128,13 @@ node -e "require('bcryptjs').hash('yourpassword',12).then(h=>console.log(h))"
 
 ## Content Editing
 
-### Option 1: Edit `content.ts` directly
-All content is in [`src/data/content.ts`](src/data/content.ts). The structure is self-documented with inline comments and examples.
+### Option 1: Edit content.ts directly
+- [x] All content is in `src/data/content.ts`. The structure is self-documented with inline comments and examples.
 
-### Option 2: Admin Dashboard
-Navigate to `your-domain/admin`, log in with your credentials (userame/password), and edit content from the browser.
+### Option 2: Edit Admin Dashboard in-browser
+- [x] Navigate to `your-domain/admin`, log in with your credentials **(userame/password)**, and edit content from the browser.
 
-> <mark>Note to apply changes in production you need Content saved! Run: npm run build && pm2 restart portfolio<mark>
+> <mark>Note to apply changes in production you need Content saved! Run: npm run build && pm2 restart portfolio</mark>
 
 ## Project Images
 
@@ -150,7 +156,7 @@ Keep files under 200~300 KB for optimal performance.
 4. Add your avatar to `public/avatar.jpg`
 5. Add project images to `public/projects/`
 6. Configure `.env`
-7. Deploy to Vercel / your hosting name
+7. Deploy to Vercel / own hosting + domain
 8. Nginx.conf setup `setup/nginx.conf`
 
 ## Deploy for Free
