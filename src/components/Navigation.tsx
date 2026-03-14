@@ -107,7 +107,7 @@ export default function Navigation() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-[var(--glass-bg)] border-[var(--clay-border)] backdrop-blur-xl text-[11px] font-bold text-[var(--text-secondary)] hover:border-purple-400/40 transition-all shadow-[2px_2px_0_var(--accent-glow)]" style={{ borderWidth: '2px' }}
+              className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-[var(--glass-bg)] border-[var(--clay-border)] backdrop-blur-xl text-[11px] font-bold text-[var(--text-secondary)] hover:border-purple-400/40 transition-colors shadow-[2px_2px_0_var(--accent-glow)]" style={{ borderWidth: '2px' }}
             >
               <Globe size={11} />
               <span>{locale}</span>
@@ -148,7 +148,7 @@ export default function Navigation() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-1 rounded bg-[var(--glass-bg)] border-[var(--clay-border)] backdrop-blur-xl text-[var(--text-secondary)] hover:text-purple-500 hover:border-purple-400/40 transition-all shadow-[2px_2px_0_var(--accent-glow)]" style={{ borderWidth: '2px' }}
+              className="p-1 rounded bg-[var(--glass-bg)] border-[var(--clay-border)] backdrop-blur-xl text-[var(--text-secondary)] hover:text-purple-500 hover:border-purple-400/40 transition-colors shadow-[2px_2px_0_var(--accent-glow)]" style={{ borderWidth: '2px' }}
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
