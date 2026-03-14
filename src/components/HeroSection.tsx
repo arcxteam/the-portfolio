@@ -276,9 +276,9 @@ export default function HeroSection() {
                     href={href}
                     target={key !== "email" ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.15, y: -4 }}
+                    whileHover={{ scale: 1.15, y: -4, transition: { type: "tween", duration: 0.15 } }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-3.5 rounded-xl bg-purple-800 border-[2px] border-purple-500/30 text-purple-200 hover:bg-emerald-700 hover:border-emerald-500/50 hover:text-white transition-all duration-200"
+                    className="p-3.5 rounded-xl bg-purple-800 border-[2px] border-purple-500/30 text-purple-200 hover:bg-emerald-700 hover:border-emerald-500/50 hover:text-white transition-colors duration-150"
                     style={{ boxShadow: '3px 3px 0 rgba(139, 92, 246, 0.2)' }}
                     aria-label={label}
                   >
