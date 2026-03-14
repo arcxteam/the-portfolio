@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/mdx": "^16.1.6",
+    "@vercel/analytics": "^2.0.1",
     "bcryptjs": "^3.0.3",
     "cookie": "^1.1.1",
     "framer-motion": "^12.34.4",
