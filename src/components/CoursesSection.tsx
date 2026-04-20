@@ -55,7 +55,20 @@ export default function CoursesSection() {
         >
           <span className="badge badge-purple mb-3 !bg-purple-800 !text-white">{t.courses.title}</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-            {t.courses.subtitle}
+            {t.courses.subtitle.includes("Continuous learning") ? (
+              <>
+                Continuous{" "}
+                <span className="bg-gradient-to-r from-emerald-500 to-purple-800 bg-clip-text text-transparent">
+                  learning
+                </span>
+                {" and professional "}
+                <span className="bg-gradient-to-r from-purple-800 to-emerald-500 bg-clip-text text-transparent">
+                  development
+                </span>
+              </>
+            ) : (
+              t.courses.subtitle
+            )}
           </h2>
           <div className="section-divider w-24 mx-auto" />
         </motion.div>
