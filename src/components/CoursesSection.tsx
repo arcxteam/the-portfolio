@@ -158,7 +158,7 @@ export default function CoursesSection() {
                     href={course.credentialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors font-medium"
+                    className="inline-flex items-center gap-1.5 text-sm text-purple-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors font-medium"
                   >
                     <Award size={14} />
                     {t.courses.viewCert}
