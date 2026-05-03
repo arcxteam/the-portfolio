@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Heart, Coffee, Copy, Check, X } from "lucide-react";
 import { siteConfig, footerData } from "@/data/content";
 import { useI18n } from "@/i18n";
@@ -94,15 +95,25 @@ export default function Footer() {
               </p>
               {hasLinks && (
                 <div className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-1.5 pt-2">
-                  {footerData.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.url}
-                      className="text-xs text-[var(--text-muted)] hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {footerData.links.map((link) =>
+                    link.url.endsWith(".xml") ? (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        className="text-xs text-[var(--text-muted)] hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={link.label}
+                        href={link.url}
+                        className="text-xs text-[var(--text-muted)] hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  )}
                 </div>
               )}
             </div>

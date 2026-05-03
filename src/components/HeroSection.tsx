@@ -296,7 +296,7 @@ export default function HeroSection() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="relative"
           >
-            <div className="glass-card p-5 sm:p-6 relative z-10">
+            <div className="border-gradient-animated p-5 sm:p-6 relative z-10" style={{ background: 'var(--card-bg)' }}>
               {/* Header */}
               <div className="flex items-center gap-3 mb-5">
                 <div
@@ -354,7 +354,7 @@ export default function HeroSection() {
               {/* Explore button */}
               <button
                 onClick={() => scrollTo('about')}
-                className="btn-primary w-full text-sm"
+                className="btn-primary w-full text-sm shimmer-effect"
               >
                 {t.hero.explorePortfolio} →
               </button>

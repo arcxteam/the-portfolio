@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useTheme } from "next-themes";
 
 interface Particle {
@@ -16,11 +16,16 @@ interface Particle {
 
 export default function CanvasBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const grainCanvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const scrollRef = useRef(0);
+
+  // Ensure we know the theme before rendering grain
+  useEffect(() => { setMounted(true); }, []);
 
   const getColors = useCallback(() => {
     const isDark = resolvedTheme === "dark";
@@ -287,11 +292,85 @@ export default function CanvasBackground() {
     };
   }, [resolvedTheme, getColors, initParticles]);
 
+  // ===== NOISE GRAIN TEXTURE (Canvas 2D) =====
+  // Static render-once grain using ImageData for performance
+  // Follows SKILL.md: Noise Grain Texture (Canvas 2D Background)
+  useEffect(() => {
+    if (!mounted) return;
+    const canvas = grainCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    const isDark = resolvedTheme === "dark";
+
+    const renderGrain = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Grain config — "landing" variant for full-page portfolio
+      const intensity = 35;
+      const density = 0.45;
+
+      // Generate noise via ImageData (fast, render-once)
+      const imageData = ctx.createImageData(canvas.width, canvas.height);
+      const data = imageData.data;
+
+      for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+          if (Math.random() > density) continue;
+          const i = (y * canvas.width + x) * 4;
+          const noise = Math.random() * intensity;
+
+          // Brand-tinted grain: purple + emerald palette
+          if (isDark) {
+            // Dark mode: subtle violet/emerald tint
+            data[i] = noise * 0.85;     // R — slight purple lean
+            data[i + 1] = noise * 0.65; // G — less green in dark
+            data[i + 2] = noise * 1.2;  // B — more blue/violet
+          } else {
+            // Light mode: warm purple tint
+            data[i] = noise * 0.8;      // R
+            data[i + 1] = noise * 0.6;  // G — less
+            data[i + 2] = noise * 1.1;  // B — purple tint
+          }
+          data[i + 3] = 20 + Math.random() * 25; // subtle alpha
+        }
+      }
+      ctx.putImageData(imageData, 0, 0);
+    };
+
+    renderGrain();
+    window.addEventListener("resize", renderGrain);
+    return () => window.removeEventListener("resize", renderGrain);
+  }, [mounted, resolvedTheme]);
+
+  const isDark = resolvedTheme === "dark";
+
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-0"
-      aria-hidden="true"
-    />
+    <>
+      {/* Animated particles/grid/glow canvas */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 w-full h-full pointer-events-none z-0"
+        aria-hidden="true"
+      />
+      {/* Static noise grain texture canvas */}
+      <canvas
+        ref={grainCanvasRef}
+        className="fixed inset-0 w-full h-full pointer-events-none z-1"
+        style={{
+          opacity: 0.18,
+          mixBlendMode: isDark ? "screen" : "multiply",
+        }}
+        aria-hidden="true"
+      />
+    </>
   );
 }

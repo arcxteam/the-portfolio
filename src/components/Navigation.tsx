@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Globe, ChevronDown } from "lucide-react";
 import { useI18n } from "@/i18n";
@@ -15,6 +15,10 @@ export default function Navigation() {
   const [mounted, setMounted] = useState(false);
   const { t, locale, setLocale } = useI18n();
   const langRef = useRef<HTMLDivElement>(null);
+
+  // Scroll progress bar
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   const navTabs = [
     { id: "home", label: t.nav.home },
@@ -64,6 +68,9 @@ export default function Navigation() {
   }, []);
 
   return (
+    <>
+    {/* Scroll progress indicator */}
+    <motion.div className="scroll-progress" style={{ scaleX }} />
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -88,7 +95,7 @@ export default function Navigation() {
               {activeSection === tab.id && (
                 <motion.span
                   layoutId="nav-pill"
-                  className="absolute inset-0 rounded tab-active"
+                  className="absolute inset-0 rounded tab-active glow-pulse"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
@@ -167,5 +174,6 @@ export default function Navigation() {
         </div>
       </div>
     </motion.nav>
+    </>
   );
 }

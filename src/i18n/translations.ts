@@ -109,7 +109,7 @@ export type TranslationKeys = {
 
 const translations: Record<Locale, TranslationKeys> = {
   en: {
-    nav: { home: "Home", about: "About", experience: "Experience", projects: "Projects", courses: "Courses", contact: "Contact" },
+    nav: { home: "Home", about: "About", experience: "Experience", projects: "Projects", courses: "Certified", contact: "Contact" },
     hero: { greeting: "Hello, I'm", iam: "I am", subtitle: "Full-Stack Developer & Creative Technologist", description: "Building elegant digital experiences with modern web technologies. Passionate about clean code, beautiful design, and innovative solutions.", viewWork: "View My Work", getInTouch: "Get In Touch", scrollDown: "Scroll Down", careerDashboard: "Career Dashboard", professionalOverview: "Professional Overview", experienceProgress: "Experience Progress", explorePortfolio: "Explore Portfolio", years: "Years" },
     about: { title: "About Me", headline: "Crafting Digital Experiences", skills: "Skills & Technologies", education: "Education", hobbies: "Hobbies", other: "Other", stats: { years: "Years Experience", projects: "Projects Completed", certs: "Certifications", tech: "Technologies" } },
     experience: { title: "Experience", subtitle: "My professional journey and career highlights", present: "Present" },

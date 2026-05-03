@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { aboutData, siteConfig } from "@/data/content";
 import { MapPinHouse, University, GraduationCap } from "lucide-react";
@@ -46,6 +46,12 @@ export default function AboutSection() {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<"skills" | "education" | "hobbies" | "other">("skills");
 
+  // Parallax for decorative blobs
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const blobY1 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const blobY2 = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+
   const tabData = activeTab === "skills"
     ? aboutData.skills
     : activeTab === "hobbies"
@@ -55,11 +61,11 @@ export default function AboutSection() {
         : []; // education uses its own render
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Blurred retina background */}
+    <section id="about" className="relative py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
+      {/* Blurred retina background — with parallax */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-purple-600/[0.06] rounded-full blur-[150px]" />
-        <div className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] bg-emerald-700/[0.05] rounded-full blur-[130px]" />
+        <motion.div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-purple-600/[0.06] rounded-full blur-[150px]" style={{ y: blobY1 }} />
+        <motion.div className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] bg-emerald-700/[0.05] rounded-full blur-[130px]" style={{ y: blobY2 }} />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10" ref={ref}>

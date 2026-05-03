@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, MapPin, Send, CheckCircle, Globe } from "lucide-react";
 import { siteConfig } from "@/data/content";
@@ -22,6 +22,12 @@ export default function ContactSection() {
   const [sent, setSent] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const { t } = useI18n();
+
+  // Parallax for decorative blobs
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const blobY1 = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  const blobY2 = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,11 +64,11 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Blurred retina background */}
+    <section id="contact" className="relative py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
+      {/* Blurred retina background — with parallax */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-[25%] right-[15%] w-[400px] h-[400px] bg-purple-600/[0.06] rounded-full blur-[150px]" />
-        <div className="absolute bottom-[15%] left-[20%] w-[350px] h-[350px] bg-emerald-700/[0.04] rounded-full blur-[130px]" />
+        <motion.div className="absolute top-[25%] right-[15%] w-[400px] h-[400px] bg-purple-600/[0.06] rounded-full blur-[150px]" style={{ y: blobY1 }} />
+        <motion.div className="absolute bottom-[15%] left-[20%] w-[350px] h-[350px] bg-emerald-700/[0.04] rounded-full blur-[130px]" style={{ y: blobY2 }} />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10" ref={ref}>

@@ -35,12 +35,12 @@ export const roles = [
 
 export const siteConfig = {
   // --- Basic Info ---
-  name: "ALEX CHEN",
+  name: "JOHN KEY",
   title: "Software Engineer | Full-Stack Developer | Cloud Architect | Open Source Contributor",
   description: "Built for those who create, not just those who code.",
   heroDescription: "Full-stack engineer crafting scalable web applications and cloud-native solutions. Passionate about open source, developer experience, and building tools that make a difference.",
-  url: "https://alexchen.dev",      // Your domain
-  email: "hello@alexchen.dev",
+  url: "https://karir.studio",      // Your domain
+  email: "team@karir.studio",
   location: "San Francisco, CA",
   campus: "M.Sc. Computer Science",  // optional
   avatar: "/avatar.png",             // Place your photo in /public/avatar.jpg/png/jpeg
@@ -50,22 +50,22 @@ export const siteConfig = {
 
   // --- Quote (shown in contact section) ---
   quote: "Let's build something amazing together. I'm always open to exciting collaborations and new challenges.",
-  quoteAuthor: "alexchen",
+  quoteAuthor: "johnkey",
 
   // --- Social Links ---
   // Add or remove socials additional socials can be added here.
   // Example: tiktok: "https://www.tiktok.com/@yourusername",
   socials: {
-    github: "https://github.com/alexchen",
-    linkedin: "https://linkedin.com/in/alexchen",
-    twitter: "https://twitter.com/alexchendev",
-    email: "mailto:hello@alexchen.dev",
-    instagram: "https://instagram.com/alexchen.dev/",
-    youtube: "https://youtube.com/@alexchendev",
-    telegram: "https://t.me/alexchendev",
+    github: "https://github.com/johnkey",
+    linkedin: "https://linkedin.com/in/johnkey",
+    twitter: "https://twitter.com/johnkeydev",
+    email: "mailto:team@karir.studio",
+    instagram: "https://instagram.com/johnkey.dev/",
+    youtube: "https://youtube.com/@johnkeydev",
+    telegram: "https://t.me/johnkeydev",
     discord: "https://discord.gg/your-invite",
-    medium: "https://medium.com/@alexchen",
-    huggingface: "https://huggingface.co/alexchen/",
+    medium: "https://medium.com/@johnkey",
+    huggingface: "https://huggingface.co/johnkey/",
     tiktok: "https://www.tiktok.com/@yourusername",
     whatsapp: "https://wa.me/country-code+your-number",
     line: "https://line.me/ti/p/your-id",
@@ -480,7 +480,7 @@ export const navTabs = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "courses", label: "Courses" },
+  { id: "courses", label: "Courses & Certified" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -494,7 +494,7 @@ export const navTabs = [
 export const footerData = {
   // --- Support / Donate ---
   donate: {
-    paypal: "https://paypal.me/alexchen",
+    paypal: "https://paypal.me/johnkey",
     paypalQr: "/projects/paypal-address.png",        // PayPal QR code image path
     eth: "0x1234567890abcdef1234567890abcdef12345678",
     ethQr: "/projects/eth-address.png",               // QR code image path

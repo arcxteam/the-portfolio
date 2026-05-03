@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Briefcase, MapPin, ExternalLink, ChevronDown, ContactRound } from "lucide-react";
 import { experienceData } from "@/data/content";
@@ -27,12 +27,18 @@ export default function ExperienceSection() {
   const [expandedId, setExpandedId] = useState<string | null>(experienceData[0]?.id || null);
   const { t } = useI18n();
 
+  // Parallax for decorative blobs
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const blobY1 = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
+  const blobY2 = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
   return (
-    <section id="experience" className="relative py-24 sm:py-32 bg-[var(--section-alt)] overflow-hidden">
-      {/* Blurred retina background */}
+    <section id="experience" className="relative py-24 sm:py-32 bg-[var(--section-alt)] overflow-hidden" ref={sectionRef}>
+      {/* Blurred retina background — with parallax */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-[30%] left-[5%] w-[400px] h-[400px] bg-purple-600/[0.05] rounded-full blur-[150px]" />
-        <div className="absolute bottom-[10%] right-[15%] w-[350px] h-[350px] bg-emerald-700/[0.04] rounded-full blur-[120px]" />
+        <motion.div className="absolute top-[30%] left-[5%] w-[400px] h-[400px] bg-purple-600/[0.05] rounded-full blur-[150px]" style={{ y: blobY1 }} />
+        <motion.div className="absolute bottom-[10%] right-[15%] w-[350px] h-[350px] bg-emerald-700/[0.04] rounded-full blur-[120px]" style={{ y: blobY2 }} />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10" ref={ref}>
