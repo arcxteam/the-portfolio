@@ -18,7 +18,7 @@ Built for those who create, not just those who code. This is a streamlined perso
 ![Version](https://img.shields.io/badge/Release-v0.1.5-66ff00?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-2496ED?style=flat-square)
 
-[![Visit](https://img.shields.io/badge/Visit%20-Live_Demo-8a2be2?style=for-the-badge&logo=safari&logoColor=66ff00)](https://my-portfolio-templates.vercel.app/)
+[![Visit](https://img.shields.io/badge/Visit%20-Live_Demo-8a2be2?style=for-the-badge&logo=safari&logoColor=66ff00)](https://the-portfolio-templates.vercel.app/)
 
 </div>
 
@@ -35,7 +35,9 @@ Built for those who create, not just those who code. This is a streamlined perso
 - **Responsive** — Mobile-first with Tailwind breakpoints, compact nav, adaptive canvas rendering.
 
 > [!NOTE]
-> For testing, dashboard panel use this `username:admin & password:admin123` preview https://my-portfolio-templates.vercel.app/admin
+> For testing, dashboard panel use this `username:admin & password:admin123`
+> Demo: [the-portfolio-templates.vercel.app](https://the-portfolio-templates.vercel.app/)
+> Admin Panel: [the-portfolio-templates.vercel.app/admin](https://the-portfolio-templates.vercel.app/admin)
 
 ## Content Structure
 

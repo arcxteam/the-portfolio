@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   // GOOGLE SEARCH CONSOLE VERIFICATION
   // ============================================================
   verification: {
-    google: "daJXgEIcwYKdnmRPInuKGAYD9Sidfk63qC3FXGk1ODM",
+    google: "oDFlh7WDYSPDRGwKyqw8lhzn8Wy7J_dL_EWutUkQkyg",
   },
 };
 
